@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stockfinder</title>
+</head>
+<body>
+    <header>
+      <button onclick="location.href='/about'">About Website</button>
+      <button onclick="location.href='/contact'">Contact</button>
+    </header>
+      <h1>Find a Stock</h1>
+    <form action="/stock" method="POST">
+        <label for="stock_ticker">Enter Stock Ticker:</label>
+        <input type="text" id="stock_ticker" name="stock_ticker" required>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

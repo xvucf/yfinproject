@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Information</title>
+</head>
+<body>
+    <header>
+        <button onclick="location.href='/about'">About Website</button>
+        <button onclick="location.href='/contact'">Contact</button>
+        <button onclick="location.href='/stockfinder'">Find a Stock</button>
+    </header>
+    <h1>Stock Information</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <p><strong>Short Name:</strong> {{ stock_data.short_name }}</p>
+        <p><strong>Long Name:</strong> {{ stock_data.long_name }}</p>
+        <p><strong>Sector:</strong> {{ stock_data.sector }}</p>
+        <p><strong>Industry:</strong> {{ stock_data.industry }}</p>
+        <p><strong>Country:</strong> {{ stock_data.country }}</p>
+        <p><strong>Market Cap:</strong> {{ stock_data.market_cap }}</p>
+        <p><strong>Total Revenue:</strong> {{ stock_data.total_revenue }}</p>
+        <p><strong>Gross Profit:</strong> {{ stock_data.gross_profit }}</p>
+        <p><strong>Current Price:</strong> {{ stock_data.current_price }}</p>
+        <p><strong>Day High:</strong> {{ stock_data.day_high }}</p>
+        <p><strong>Day Low:</strong> {{ stock_data.day_low }}</p>
+        <p><strong>Dividend Rate:</strong> {{ stock_data.dividend_rate }}</p>
+    {% endif %}
+</body>
+</html>
