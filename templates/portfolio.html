@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Portfolio</title>
+</head>
+<body>
+    <h1>Your Portfolio</h1>
+    <p>Wallet Balance: €{{ wallet }}</p>
+    <table border="1">
+        <tr>
+            <th>Stock Ticker</th>
+            <th>Quantity</th>
+            <th>Cost Basis (€)</th>
+            <th>Current Value (€)</th>
+            <th>Profit/Loss (€)</th>
+        </tr>
+        {% for stock in portfolio %}
+        <tr>
+            <td>{{ stock.ticker }}</td>
+            <td>{{ stock.quantity }}</td>
+            <td>{{ stock.cost_basis }}</td>
+            <td>{{ stock.current_value }}</td>
+            <td style="color: {% if stock.profit_loss >= 0 %}green{% else %}red{% endif %};">
+                {{ stock.profit_loss }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/stockfinder">Add More Stocks</a>
+</body>
+</html>
