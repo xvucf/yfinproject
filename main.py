@@ -8,11 +8,11 @@ user_data = {
     "wallet": 0,  # Initial cash amount
     "portfolio": []  # List of owned stocks
 }
-#newcomment
+
 @app.route('/')
 def login():
     return render_template('login.html')
-#new changes
+
 @app.route('/greet', methods=['POST'])
 def greet():
     username = request.form.get('username')
