@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Login</title>
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+    
+        form {
+            margin-top: 20px;
+        }
+    
+        img {
+            max-width: 100px;
+        }
+    
+        button {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Login Page</h1>
-    <form action="/greet" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <button type="submit">Login</button>
-    </form>
+    <main>
+        <img src="{{ url_for('static', filename='2.jpg') }}" alt="Logo">
+        <h1>WELCOME TO WINPORTFOLIO</h1>
+        <form action="{{ url_for('greet') }}" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+            <button type="submit">Login</button>
+        </form>
+    </main>
 </body>
 </html>
