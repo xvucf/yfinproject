@@ -2,14 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Stockfinder</title>
+    <style>
+      .inline-container {
+        display: flex;
+        align-items: center;
+      }
+    </style>
 </head>
 <body>
     <header>
       <button onclick="location.href='/about'">About Website</button>
       <button onclick="location.href='/contact'">Contact</button>
     </header>
-      <h1>Find a Stock</h1>
+    <div class="inline-container">
+      <img src="{{ url_for('static', filename='4.jpg') }}" alt="Find" style="width: 40px; height: 40px;">
+      <h1 style="color: #d0ebf7;">Find a Stock</h1>
+    </div>
     <form action="/stock" method="POST">
         <label for="stock_ticker">Enter Stock Ticker:</label>
         <input type="text" id="stock_ticker" name="stock_ticker" required>
