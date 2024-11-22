@@ -4,6 +4,38 @@
 <head>
     <title>Stock Details</title>
 </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #22232f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    
+        .error-icon {
+            font-size: 80px;
+            color: red;
+        }
+    
+        .error-message {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+    
+        .error-button {
+            padding: 10px 20px;
+            background-color: #22232f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid white;
+        }
+    
+        .error-button:hover {
+            background-color: #575780;
+        }
+    </style>
 
 <body>
     {% if error %}
