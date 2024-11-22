@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Stockfinder</title>
     <style>
@@ -23,7 +22,6 @@
     <form action="/stock" method="POST">
         <label for="stock_ticker">Enter Stock Ticker:</label>
         <input type="text" id="stock_ticker" name="stock_ticker" required>
-        <br><br>
         <button type="submit">Submit</button>
     </form>
 
