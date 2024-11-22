@@ -1,6 +1,6 @@
 body {
-    background-color: #1a1a1a;
-    color: #1a1a1a;
+    background-color: #22232f;
+    color: #d0ebf7;
     font-family: Arial, sans-serif;
 }
 
@@ -23,7 +23,6 @@ footer {
 
 button {
     background-color: #4CAF50;
-    /* 按钮绿色背景 */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -35,4 +34,8 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+.text-center {
+    text-align: center;
 }
