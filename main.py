@@ -8,6 +8,7 @@ user_data = {
     "wallet": 0,  # Initial cash amount
     "portfolio": []  # List of owned stocks
 }
+# reygreytgyegtey
 
 @app.route('/')
 def login():
