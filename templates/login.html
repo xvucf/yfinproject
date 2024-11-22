@@ -13,10 +13,6 @@
             text-align: center;
         }
     
-        form {
-            margin-top: 20px;
-        }
-    
         img {
             max-width: 100px;
         }
@@ -28,7 +24,7 @@
 </head>
 <body>
     <main>
-        <img src="{{ url_for('static', filename='2.jpg') }}" alt="Logo">
+        <img src="{{ url_for('static', filename='微信图片_20241121225903.png') }}" alt="Logo">
         <h1>WELCOME TO WINPORTFOLIO</h1>
         <form action="{{ url_for('greet') }}" method="POST">
             <label for="username">Username:</label>
