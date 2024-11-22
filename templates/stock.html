@@ -2,64 +2,28 @@
 <html>
 
 <head>
-    <title>Stock Not Found</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #282c34;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .error-icon {
-            font-size: 100px;
-            color: #ff4c4c;
-        }
-
-        .error-title {
-            font-size: 36px;
-            margin: 10px 0;
-        }
-
-        .error-message {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .retry-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .retry-button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Stock Details</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="error-icon">⚠️</div>
-        <div class="error-title">Error</div>
-        <div class="error-message">Stock not found. Please try another ticker.</div>
-        <a href="/stockfinder" class="retry-button">Search for another stock</a>
-    </div>
+    {% if error %}
+    <h1>Error</h1>
+    <p>{{ error }}</p>
+    <a href="/stockfinder">Search for another stock</a>
+    {% else %}
+    <h1>{{ stock_data.short_name }}</h1>
+    <p>Ticker: {{ stock_data.ticker }}</p>
+    <p>Current Price: €{{ stock_data.current_price }}</p>
+    <h2>Buy Stock</h2>
+    <form action="/buy_stock" method="POST">
+        <input type="hidden" name="stock_ticker" value="{{ stock_data.ticker }}">
+        <input type="hidden" name="price" value="{{ stock_data.current_price }}">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <br><br>
+        <button type="submit">Buy</button>
+    </form>
+    {% endif %}
 </body>
 
 </html>
