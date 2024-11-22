@@ -1,17 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Contact</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #22232f;
+            color: #d0e6f0;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px;
+        }
+
+        header button {
+            margin-left: 10px;
+            padding: 15px 25px;
+            font-size: 1em;
+            border: 1px solid #d0e6f0;
+            background-color: transparent;
+            color: #d0e6f0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        header button:hover {
+            background-color: #d0e6f0;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 5px 5px;
+        }
+
+        .container {
+            display: flex;
+            padding: 150px 400px;
+        }
+
+        .profile img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-item img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .contact-item input {
+            padding: 12px;
+            font-size: 1.2em;
+            width: 250px;
+            border: 1px solid #d0e6f0;
+            border-radius: 5px;
+            background-color: #22232f;
+            color: #d0e6f0;
+        }
+    </style>
 </head>
+
 <body>
     <header>
-    <button onclick="location.href='/about'">About Website</button>
-        <button onclick="location.href='/buildyourportfolio'">Start building your portfolio!</button>
-    <button onclick="location.href='/stockfinder'">Find a Stock</button>
-  </header>
-  <h1>Contact form??</h1>
-  <p>Maybe form with contact</p>
+        <button onclick="location.href='/start'">Start Portfolio</button>
+        <button onclick="location.href='/about'">About Website</button>
+        <button onclick="location.href='/stockfinder'">Find a Stock</button>
+    </header>
 
+    <h1>Contact</h1>
+
+    <div class="container">
+        <div class="profile">
+            <img src="static/微信图片_20241121225903.png" alt="Profile Picture">
+            <p>winportfolio</p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <img src="static/1732229937889.png" alt="Phone">
+                <input type="text" value="+49 1235678901" readonly>
+            </div>
+            <div class="contact-item">
+                <img src="static/1732230252169.png" alt="Email">
+                <input type="text" value="1235678901@cbs-mail.de" readonly>
+            </div>
+            <div class="contact-item">
+                <img src="static/1732230297642.png" alt="Instagram">
+                <input type="text" value="WINPORTFOLIO" readonly>
+            </div>
+            <div class="contact-item">
+                <img src="static/1732230323272.png" alt="Facebook">
+                <input type="text" value="WINPORTFOLIO" readonly>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -1,0 +1,38 @@
+body {
+    background-color: #1a1a1a;
+    color: #1a1a1a;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #4682b4;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    background-color: #4682b4;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    background-color: #4CAF50;
+    /* 按钮绿色背景 */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
