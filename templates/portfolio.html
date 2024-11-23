@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Your Portfolio</title>
 </head>
 <body>
-    <h1>Your Portfolio</h1>
-    <p>Wallet Balance: €{{ wallet }}</p>
-    <table border="1">
-        <tr>
-            <th>Stock Ticker</th>
-            <th>Quantity</th>
-            <th>Cost Basis (€)</th>
-            <th>Current Value (€)</th>
-            <th>Profit/Loss (€)</th>
-        </tr>
-        {% for stock in portfolio %}
-        <tr>
-            <td>{{ stock.ticker }}</td>
-            <td>{{ stock.quantity }}</td>
-            <td>{{ stock.cost_basis }}</td>
-            <td>{{ stock.current_value }}</td>
-            <td style="color: {% if stock.profit_loss >= 0 %}green{% else %}red{% endif %};">
-                {{ stock.profit_loss }}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="/stockfinder">Add More Stocks</a>
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <img src="{{ url_for('static', filename='7.jpg') }}" style="width: 40px; height: 40px;">
+        <h1>Your Portfolio</h1>
+    </div>
+    <p style="text-align: left; margin-left: 20px;">Wallet Balance: €{{ wallet }}</p>
+    <div style="text-align: center;">
+        <table border="1" style="margin: 0 auto;">
+            <tr>
+                <th>Stock Ticker</th>
+                <th>Quantity</th>
+                <th>Cost Basis (€)</th>
+                <th>Current Value (€)</th>
+                <th>Profit/Loss (€)</th>
+            </tr>
+            {% for stock in portfolio %}
+            <tr>
+                <td>{{ stock.ticker }}</td>
+                <td>{{ stock.quantity }}</td>
+                <td>{{ stock.cost_basis }}</td>
+                <td>{{ stock.current_value }}</td>
+                <td style="color: {% if stock.profit_loss >= 0 %}green{% else %}red{% endif %};">
+                    {{ stock.profit_loss }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div style="text-align: right; margin-right: 20px;">
+        <img src="{{ url_for('static', filename='8.jpg') }}" style="width: 20px; height: 20px;">
+        <a href="/stockfinder" style="color: white;">Add More Stocks</a>
+    </div>
 </body>
 </html>
