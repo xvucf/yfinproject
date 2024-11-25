@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
       .flex-container {
         display: flex;
@@ -20,7 +22,9 @@
     <img src="{{ url_for('static', filename='3.jpg') }}" style="width: 50px; height: 50px;">
     <h1>About Us</h1>
   </div>
-  <p class="text-center"> The company was founded in 2000. It was born in Cologne, Germany.
+  <p class="text-center; ">
+  <p style="font-size: 20px;"> 
+    The company was founded in 2000. It was born in Cologne, Germany.
     <br><br>
     Three professional founders met in Cologne
     <br><br>
@@ -30,8 +34,9 @@
   </p>
   
   <div class="text-center">
-    <p style="font-family: 'Magnolia Script', monospace; font-size: 40px; color: white;">
-      Be the best investor partner
+
+    <p style="font-family: 'Dancing Script', cursive; monospace; font-size: 60px; color: white;">
+      - Be the best investor partner -
     </p>
     <img src="{{ url_for('static', filename='微信图片_20241121225903.png') }}" alt="Logo" style="width: 100px; height: 100px;">
   </div>
