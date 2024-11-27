@@ -44,15 +44,20 @@
     </style>
 
 <body>
+    <button onclick="location.href='/portfolio'">Portfolio</button>
+    <button onclick="location.href='/buildyourportfolio'">Add money to your wallet</button>
     {% if error %}
         <img src="static/image.png" alt="Profile Picture">
         <h1>Error</h1>
         <p>{{ error }}</p>
         <a href="/stockfinder">Search for another stock</a>
     {% else %}
-        <h1>{{ stock_data.short_name }}</h1>
-        <p>Ticker: {{ stock_data.ticker }}</p>
-        <p>Current Price: €{{ stock_data.current_price }}</p>
+        <h1>Details for {{ stock_data.long_name }}</h1>
+        <p><strong>Ticker:</strong> {{ stock_data.ticker }}</p>
+        <p><strong>Current Price:</strong> ${{ stock_data.current_price }}</p>
+        <p><strong>Day Low:</strong> ${{ stock_data.day_low }} | <strong>Day High:</strong> ${{ stock_data.day_high }}</p>
+        <p><strong>52-Week Range:</strong> {{ stock_data.year_range_formatted }}</p>
+        <p><strong>Current Wallet Balance:</strong> ${{ wallet }}</p>
         <h2>Buy Stock</h2>
         <form action="/buy_stock" method="POST">
             <input type="hidden" name="stock_ticker" value="{{ stock_data.ticker }}">

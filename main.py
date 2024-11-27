@@ -45,25 +45,32 @@ def stockfinder():
 
 @app.route('/stock', methods=['POST'])
 def stock():
-    # Get the stock ticker from the form
     stock_ticker = request.form.get('stock_ticker')
     try:
         ticker = yf.Ticker(stock_ticker)
         info = ticker.info
 
-        # Check if stock name is available
-        if not info.get('shortName'):
+        # Ensure the stock name exists
+        if not info.get('longName'):
             return render_template('stock.html', error="Stock not found. Please try another ticker.")
 
-        # Extract key stock information
+        # Extract stock data
         stock_data = {
             "ticker": stock_ticker.upper(),
-            "short_name": info.get('shortName'),
-            "current_price": info.get('currentPrice', 0)
+            "long_name": info.get('longName', 'Unknown'),
+            "current_price": info.get('currentPrice', 'Unknown'),
+            "day_low": info.get('dayLow', 'Unknown'),
+            "day_high": info.get('dayHigh', 'Unknown'),
+            "year_range": info.get('fiftyTwoWeekLow', 'Unknown'),  # 52-Week Low
+            "year_high": info.get('fiftyTwoWeekHigh', 'Unknown'),  # 52-Week High
         }
-        return render_template('stock.html', stock_data=stock_data)
+
+        # Format the 52-week range
+        stock_data["year_range_formatted"] = f"${stock_data['year_range']} - ${stock_data['year_high']}"
+
+        return render_template('stock.html', stock_data=stock_data, wallet=user_data['wallet'])
     except Exception as e:
-        return render_template('stock.html', error=f"Error fetching stock data: {e}")
+        return render_template('stock.html', error=f"Error fetching stock data: {e}", wallet=user_data['wallet'])
 
 @app.route('/buy_stock', methods=['POST'])
 def buy_stock():
