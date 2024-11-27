@@ -3,12 +3,12 @@ import yfinance as yf
 
 app = Flask(__name__)
 
-# In-memory storage for wallet and portfolio
+
 user_data = {
-    "wallet": 0,  # Initial cash amount
-    "portfolio": []  # List of owned stocks
+    "wallet": 0,
+    "portfolio": []
 }
-# reygreytgyegtey
+
 
 @app.route('/')
 def login():
@@ -30,14 +30,16 @@ def contact():
 
 @app.route('/buildyourportfolio')
 def home():
-    return render_template('buildyourportfolio.html')
+    return render_template('buildyourportfolio.html', wallet=user_data['wallet'])
+
 
 @app.route('/set_wallet', methods=['POST'])
 def set_wallet():
-    # Set the initial amount of money in the wallet
+
     amount = float(request.form.get('amount', 0))
-    user_data['wallet'] = amount
+    user_data['wallet'] += amount
     return redirect(url_for('stockfinder'))
+
 
 @app.route('/stockfinder')
 def stockfinder():
@@ -50,11 +52,11 @@ def stock():
         ticker = yf.Ticker(stock_ticker)
         info = ticker.info
 
-        # Ensure the stock name exists
+
         if not info.get('longName'):
             return render_template('stock.html', error="Stock not found. Please try another ticker.")
 
-        # Extract stock data
+
         stock_data = {
             "ticker": stock_ticker.upper(),
             "long_name": info.get('longName', 'Unknown'),
@@ -65,7 +67,7 @@ def stock():
             "year_high": info.get('fiftyTwoWeekHigh', 'Unknown'),  # 52-Week High
         }
 
-        # Format the 52-week range
+
         stock_data["year_range_formatted"] = f"${stock_data['year_range']} - ${stock_data['year_high']}"
 
         return render_template('stock.html', stock_data=stock_data, wallet=user_data['wallet'])
@@ -74,7 +76,7 @@ def stock():
 
 @app.route('/buy_stock', methods=['POST'])
 def buy_stock():
-    # Process stock purchase
+
     stock_ticker = request.form.get('stock_ticker')
     quantity = int(request.form.get('quantity', 0))
     price = float(request.form.get('price', 0))
@@ -86,20 +88,20 @@ def buy_stock():
             "current_price": price
         })
 
-    # Deduct from wallet and add to portfolio
+
     user_data['wallet'] -= total_cost
     user_data['portfolio'].append({
         "ticker": stock_ticker,
         "quantity": quantity,
-        "price": price,  # Cost per share
-        "total_cost": total_cost  # Total spent on this stock
+        "price": price,
+        "total_cost": total_cost
     })
     return redirect(url_for('portfolio'))
 
 
 @app.route('/portfolio')
 def portfolio():
-    # Calculate current portfolio value and profit/loss
+
     portfolio_data = []
     for stock in user_data['portfolio']:
         ticker = yf.Ticker(stock['ticker'])
@@ -110,12 +112,14 @@ def portfolio():
         portfolio_data.append({
             "ticker": stock['ticker'],
             "quantity": stock['quantity'],
-            "cost_basis": stock['total_cost'],
-            "current_value": current_value,
-            "profit_loss": profit_loss
+            "cost_basis": round(stock['total_cost'], 2),
+            "current_value": round(current_value, 2),
+            "profit_loss": round(profit_loss, 2)
         })
 
-    return render_template('portfolio.html', wallet=user_data['wallet'], portfolio=portfolio_data)
+    wallet_balance = round(user_data['wallet'], 2)  # Round wallet balance to 2 decimals
+    return render_template('portfolio.html', wallet=wallet_balance, portfolio=portfolio_data)
+
 
 
 if __name__ == '__main__':

@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Your Portfolio</title>
 </head>
 <body>
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-        <img src="{{ url_for('static', filename='7.jpg') }}" style="width: 40px; height: 40px;">
         <h1>Your Portfolio</h1>
-    </div>
-    <p style="text-align: left; margin-left: 20px;">Wallet Balance: €{{ wallet }}</p>
+    <p>Wallet Balance: ${{ wallet }}</p>
     <div style="text-align: center;">
         <table border="1" style="margin: 0 auto;">
             <tr>
                 <th>Stock Ticker</th>
                 <th>Quantity</th>
-                <th>Cost Basis (€)</th>
-                <th>Current Value (€)</th>
-                <th>Profit/Loss (€)</th>
+                <th>Cost Basis ($)</th>
+                <th>Current Value ($)</th>
+                <th>Profit/Loss ($)</th>
             </tr>
             {% for stock in portfolio %}
             <tr>
@@ -33,12 +29,11 @@
         </table>
     </div>
 
-    <div style="text-align: right; margin-right: 20px;">
-        <img src="{{ url_for('static', filename='8.jpg') }}" style="width: 20px; height: 20px;">
-        <a href="/stockfinder" style="color: white;">Add More Stocks</a>
+
+        <a href="/stockfinder" >Add More Stocks</a>
         <br>
         <br>
-        <a href="/buildyourportfolio" style="color: white;">Add money to your wallet</a>
-    </div>
+        <a href="/buildyourportfolio" >Add money to your wallet</a>
+
 </body>
 </html>
