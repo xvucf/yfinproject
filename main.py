@@ -63,8 +63,8 @@ def stock():
             "current_price": info.get('currentPrice', 'Unknown'),
             "day_low": info.get('dayLow', 'Unknown'),
             "day_high": info.get('dayHigh', 'Unknown'),
-            "year_range": info.get('fiftyTwoWeekLow', 'Unknown'),  # 52-Week Low
-            "year_high": info.get('fiftyTwoWeekHigh', 'Unknown'),  # 52-Week High
+            "year_range": info.get('fiftyTwoWeekLow', 'Unknown'),  
+            "year_high": info.get('fiftyTwoWeekHigh', 'Unknown'),  
         }
 
 
@@ -117,7 +117,7 @@ def portfolio():
             "profit_loss": round(profit_loss, 2)
         })
 
-    wallet_balance = round(user_data['wallet'], 2)  # Round wallet balance to 2 decimals
+    wallet_balance = round(user_data['wallet'], 2) 
     return render_template('portfolio.html', wallet=wallet_balance, portfolio=portfolio_data)
 
 
